@@ -27,7 +27,7 @@ include DegreeParse
 
 student = Student.new(YAML.load(File.read("student.yml")), "requirements.yml.erb")
 
-puts student.check.each
+puts student.check
 ```
 
 This returns a hash of requirement names and whether or not they are satisfied.
