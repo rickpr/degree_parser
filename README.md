@@ -1,7 +1,5 @@
 # DegreeParse
 
-TODO: Write a gem description
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,7 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Require and include this module to use it
+
+``` ruby
+require 'degree_parse'
+
+include DegreeParse
+
+student = Student.new(YAML.load(File.read("student.yml")), "requirements.yml.erb")
+
+puts student.check.each
+```
+
+This returns a hash of requirement names and whether or not they are satisfied.
 
 ## Contributing
 
@@ -35,13 +45,4 @@ This format allows us to specify degree plans in YAML format, and parse a
 student to check this student against degree requirements. The next phase is to
 make this parser produce Prolog code, and use that for reasoning.
 
-# Getting started
 
-To use this, first install the `yaml` and `erb` gems.
-
-``` bash
-gem install yaml
-gem install erb
-```
-
-Next, 
