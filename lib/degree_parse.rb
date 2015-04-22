@@ -35,7 +35,8 @@ module DegreeParse
       requirements.each do |key, value|
         if key == "courses"
           courses = value.map { |name, attr| Course.new(name, hours: get_hours(name), grade: attr["grade"]) }
-          checked << { name => match(taken, courses, hours: requirements["hours"], take: requirements["take"]) }
+          take = requirements["take"] || (0 if requirements["hours"])
+          checked << { name => match(taken, courses, hours: requirements["hours"], take: take) }
         else
           check(taken, requirements[key], key, checked) unless key == "hours" || key == "take"
         end
